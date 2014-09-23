@@ -1,3 +1,5 @@
+
+
 class Game
   attr_reader :guess,
               :turns,
@@ -6,7 +8,7 @@ class Game
               :display,
               :command
 
-  def initialize(display = RecordKeeper.new)
+  def initialize(display)
     @guess         = 0
     @turns         = 0
     @display       = display
