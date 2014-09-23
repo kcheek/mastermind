@@ -1,22 +1,3 @@
-# display, "Welcome to MASTERMIND"
-# display, "Would you like to (p)lay, read the (i)nstructions, or (q)uit?"
-# set p and play to start the game
-# set i and instructions to show a short explanation of the game
-# set q and quit to end the game
-# set r and red to the color red
-# set g and green to the color green
-# set b and blue to the color blue
-# set y and yellow to the color yellow
-# display, "I have generated a beginner sequence with four elements made up of: (r)ed, (g)reen, (b)lue, and (y)ellow. Use (q)uit at any time to end the game.  What's your guess?"
-# if it's longer than 4 letters tell them it's too short
-# if it's shorter than 4 letters tell them it's too long
-# display feedback on players guesses
-# display congratulations message and amount of time it took them to guess
-# display feedback on players guesses
-# display congratulations message and amount of time it took them to guess
-# display previous guesses with results every turn
-
-
 class Display
 
   def intro
@@ -72,9 +53,8 @@ class Display
   end
 
   def guess_stats(stats)
-    puts "Your guess of #{stats.guess.inspect}"
-    puts "has #{stats.correct_spot} colors in the correct spot"
-    puts "and #{stats.incorrect_spot} colors in the incorrect spot"
-    puts "and #{stats.incorrect_color} colors that are incorrect"
+    puts "Your guess of #{stats.input.inspect}"
+    puts "has #{stats.correct_spot_and_color} colors in the correct spot"
+    puts "and #{stats.correct_color_incorrect_spot} colors in the incorrect spot"
   end
 end

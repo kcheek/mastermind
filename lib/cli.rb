@@ -1,11 +1,3 @@
-# records previous guesses
-# keep track of how many times theyve guessed
-# compare solution sequence to guess sequence
-# randomly generate a sequence of 4
-# prompt player to guess
-# display how many colors were correct and how many colors were in the right position
-# print time it took them to play
-
 class Cli
   attr_reader :command, :display
 

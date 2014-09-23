@@ -1,5 +1,3 @@
-#
-
 class Game
   attr_reader :turns,
               :color_selection,
@@ -13,12 +11,15 @@ class Game
     @input           = ""
     @color_selection = ['r','g','b','y']
     @secret_colors   = (0..3).map { color_selection.sample }.join
+    @start_time      = Time.new
+    @end_time        = Time.new
   end
 
   def play
     display.game_intro
     loop do
       increment_turn
+      @start_time
       display.turn_indicator(turns)
       display.prompt_game_input
       @input = gets.strip.downcase
@@ -26,7 +27,11 @@ class Game
         display.game_quit
         break
       elsif win?
-        display.game_win # display # of turns & amt of time
+        display.game_win
+        display.turn_indicator(turns)
+        @end_time
+        total_time = end_time - start_time
+        display.total_time
         break
       elsif invlaid_guess?
         display.not_a_valid_command
