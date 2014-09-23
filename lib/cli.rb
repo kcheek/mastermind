@@ -6,7 +6,7 @@
 # display how many colors were correct and how many colors were in the right position
 # print time it took them to play
 
-class RecordKeeper
+class Cli
   attr_reader :command, :display
 
   def initialize(display)
