@@ -9,9 +9,9 @@
 class RecordKeeper
   attr_reader :command, :display
 
-  def initialize
+  def initialize(display)
     @command = ''
-    @display = Display.new
+    @display = display
   end
 
   def start
