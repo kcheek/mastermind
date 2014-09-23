@@ -33,7 +33,7 @@ class Game
         total_time = end_time - start_time
         display.total_time
         break
-      elsif invlaid_guess?
+      elsif invalid_guess?
         display.not_a_valid_command
       else
         display.print_guess_stats(guess_stats)
@@ -56,8 +56,20 @@ class Game
   end
 
   # true if any of the characters they entered is not in color_selection
-  def invlaid_guess?
-    raise "Implement me!"
+  def invalid_guess?
+    input_too_long || input_too_short || used_invalid_color
+  end
+
+  def input_too_long
+    input > 4
+  end
+
+  def input_too_short
+    input < 4
+  end
+
+  def used_invalid_color
+    
   end
 
   def guess_stats
