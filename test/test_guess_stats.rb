@@ -1,4 +1,25 @@
-# puts "Your guess of #{stats.guess.inspect}"
-# puts "has #{stats.correct_spot} colors in the correct spot"
-# puts "and #{stats.incorrect_spot} colors in the incorrect spot"
-# puts "and #{stats.incorrect_color} colors that are incorrect"
+
+require 'minitest/autorun'
+require 'minitest/pride'
+require_relative '../lib/guess_stats'
+
+class TestGuessStatsCorrectSpot < Minitest::Test
+  def assert_correct_spot(actual_colors, guessed_colors, num_in_correct_spot)
+    stats = GuessStats.new(actual_colors, guessed_colors)
+    assert_equal num_in_correct_spot, stats.correct_spot
+  end
+
+  def test_all_correct
+    assert_correct_spot "rrrr", "rrrr", 4
+  end
+end
+
+class TestGuessStatsIncorrectSpots
+  def test_whatevz
+  end
+end
+
+class TestGuessStatsIncorrectColor
+  def test_whatevz
+  end
+end
