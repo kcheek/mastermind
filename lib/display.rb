@@ -53,7 +53,7 @@ class Display
     puts "You are on turn #{turns}."
   end
 
-  def game_command_request
+  def prompt_game_input
     print "Ok, this is your time to shine.  Show us what you've got and enter your guess: "
   end
 
@@ -69,5 +69,12 @@ class Display
     puts "I do not think that means what you think that means.
       Why don't you think about your life choices and try again."
     program_instructions
+  end
+
+  def guess_stats(stats)
+    puts "Your guess of #{stats.guess.inspect}"
+    puts "has #{stats.correct_spot} colors in the correct spot"
+    puts "and #{stats.incorrect_spot} colors in the incorrect spot"
+    puts "and #{stats.incorrect_color} colors that are incorrect"
   end
 end
