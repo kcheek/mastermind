@@ -30,10 +30,3 @@ class GuessStats
   end
 
 end
-
-
-# guess = GuessStats.new("gyrg", "gyrb")  # => #<GuessStats:0x007f8eda841d98 @actual_colors="gyrg", @guessed_colors="gyrb">
-# guess.correct_color_incorrect_spot      # => 3
-
-guess = GuessStats.new("rrrr", "rrrr")
-guess.correct_color_incorrect_spot

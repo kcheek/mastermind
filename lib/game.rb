@@ -67,9 +67,7 @@ class Game
     input.length < 4
   end
 
-
   def guess_stats
     GuessStats.new(secret_colors, input)
-
   end
 end
