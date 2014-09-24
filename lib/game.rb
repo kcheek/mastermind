@@ -55,24 +55,21 @@ class Game
     input == "q" || input == "quit"
   end
 
-  # true if any of the characters they entered is not in color_selection
   def invalid_guess?
-    input_too_long || input_too_short || used_invalid_color
+    input_too_long || input_too_short
   end
 
   def input_too_long
-    input > 4
+    input.length > 4
   end
 
   def input_too_short
-    input < 4
+    input.length < 4
   end
 
-  def used_invalid_color
-    
-  end
 
   def guess_stats
     GuessStats.new(secret_colors, input)
+    
   end
 end

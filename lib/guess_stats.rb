@@ -1,30 +1,42 @@
 class GuessStats
-  attr_reader :guessed_colors, 
+  attr_reader :guessed_colors  # => nil
 
   def initialize(actual_colors, guessed_colors)
-    @actual_colors  = actual_colors
-    @guessed_colors = guessed_colors
+    @actual_colors  = actual_colors              # => "rrrr"
+    @guessed_colors = guessed_colors             # => "rrrr"
   end
 
   def correct_color_incorrect_spot
-    @correct_count = correct_guess_count
+    @correct_count ||= correct_guess_count  # => 1
   end
 
   def correct_spot_and_color
-    @remainder = 0
+    remainder = 0
     (0..3).each do |index|
-      if @input[index] == secret_colors[index]
-        @remainder += 1
+      if @guessed_colors[index] == @actual_colors[index]
+        remainder += 1
       end
     end
-    @remainder
+    remainder
   end
 
-  def unique_guesses
-    guessed_colors.uniq.join
+  private  # => GuessStats
+
+  def unique(colors)
+    colors.split("").uniq.join  # => "r", "r"
   end
 
   def correct_guess_count
-    unique_guesses.scan(Regexp.new("[#{secret_colors}]")).count
+    unique(@actual_colors)                          # => "r"
+      .scan(
+        Regexp.new("[#{unique(@guessed_colors)}]")  # => /[r]/
+      )                                             # => ["r"]
+      .count                                        # => 1
   end
 end
+
+# guess = GuessStats.new("gyrg", "gyrb")  # => #<GuessStats:0x007f8eda841d98 @actual_colors="gyrg", @guessed_colors="gyrb">
+# guess.correct_color_incorrect_spot      # => 3
+
+guess = GuessStats.new("rrrr", "rrrr")  # => #<GuessStats:0x007ffea8845e78 @actual_colors="rrrr", @guessed_colors="rrrr">
+guess.correct_color_incorrect_spot      # => 1

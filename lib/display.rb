@@ -1,7 +1,7 @@
 class Display
 
   def intro
-    puts "Hello, and welcome to MASTERMIND!!!!"
+    puts "Hello, and welcome to ***M-A-S-T-E-R-M-I-N-D!!!!***"
     program_instructions
   end
 
@@ -22,11 +22,10 @@ class Display
   end
 
   def ending
-    puts "Have a lovely day!"
+    puts "Goodbye, and have a lovely day!"
   end
 
   def game_intro
-    puts "Great, let's do this."
     puts "Please guess four letters. (r)ed, (g)reen, (b)lue, (y)ellow"
   end
 
@@ -35,11 +34,11 @@ class Display
   end
 
   def prompt_game_input
-    print "Ok, this is your time to shine.  Show us what you've got and enter your guess: "
+    print "Ok, this is your time to shine.  Enter your guess: "
   end
 
   def game_quit
-    puts "Goodbye, and have a lovely day."
+    puts "You have ended your game. Would you like to read the 'i'nstructions, 'p'lay again, or 'q'uit "
   end
 
   def game_win
@@ -52,9 +51,9 @@ class Display
     program_instructions
   end
 
-  def guess_stats(stats)
-    puts "Your guess of #{stats.input.inspect}"
-    puts "has #{stats.correct_spot_and_color} colors in the correct spot"
-    puts "and #{stats.correct_color_incorrect_spot} colors in the incorrect spot"
+  def print_guess_stats(stats)
+    puts "You guessed #{stats.guessed_colors}."
+    puts "You have #{stats.correct_color_incorrect_spot} correct elements"
+    puts "with #{stats.correct_spot_and_color} in the correct position."
   end
 end
