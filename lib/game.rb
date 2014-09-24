@@ -11,15 +11,13 @@ class Game
     @input           = ""
     @color_selection = ['r','g','b','y']
     @secret_colors   = (0..3).map { color_selection.sample }.join
-    @start_time      = Time.new
-    @end_time        = Time.new
+    @start_time      = Time.now
   end
 
   def play
     display.game_intro
     loop do
       increment_turn
-      @start_time
       display.turn_indicator(turns)
       display.prompt_game_input
       @input = gets.strip.downcase
@@ -29,9 +27,10 @@ class Game
       elsif win?
         display.game_win
         display.turn_indicator(turns)
-        @end_time
-        total_time = end_time - start_time
-        display.total_time
+        total_time = (Time.now - @start_time).to_i
+        minutes_time = total_time / 60
+        seconds_time = total_time % 60
+        display.total_time(minutes_time, seconds_time)
         break
       elsif invalid_guess?
         display.not_a_valid_command
@@ -70,6 +69,6 @@ class Game
 
   def guess_stats
     GuessStats.new(secret_colors, input)
-    
+
   end
 end

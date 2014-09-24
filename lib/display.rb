@@ -51,6 +51,10 @@ class Display
     program_instructions
   end
 
+  def total_time(minutes_time, seconds_time)
+    puts "It took you #{minutes_time} minutes and #{seconds_time} seconds to complete your game."
+  end
+
   def print_guess_stats(stats)
     puts "You guessed #{stats.guessed_colors}."
     puts "You have #{stats.correct_color_incorrect_spot} correct elements"
