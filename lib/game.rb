@@ -17,14 +17,16 @@ class Game
   def play
     display.game_intro
     loop do
-      increment_turn
       display.turn_indicator(turns)
       display.prompt_game_input
       @input = gets.strip.downcase
       if exit?
         display.game_quit
         break
+      elsif invalid_guess?
+        display.not_a_valid_command
       elsif win?
+        increment_turn
         display.game_win
         display.turn_indicator(turns)
         total_time = (Time.now - @start_time).to_i
@@ -32,9 +34,8 @@ class Game
         seconds_time = total_time % 60
         display.total_time(minutes_time, seconds_time)
         break
-      elsif invalid_guess?
-        display.not_a_valid_command
       else
+        increment_turn
         display.print_guess_stats(guess_stats)
       end
     end

@@ -48,7 +48,6 @@ class Display
   def not_a_valid_command
     puts "I do not think that means what you think that means.
       Why don't you think about your life choices and try again."
-    program_instructions
   end
 
   def total_time(minutes_time, seconds_time)
