@@ -6,7 +6,12 @@ class Display
   end
 
   def program_instructions
-    puts "Enter 'p' or 'play' to play, 'i' or 'instructions' for instructions, or 'q' or 'quit' to quit."
+    puts "
+     You may enter:
+      'p' or 'play' to play,
+      'i' or 'instructions' for instructions, or
+      'q' or 'quit' to quit.
+        "
   end
 
   def command_request

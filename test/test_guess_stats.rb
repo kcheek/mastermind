@@ -1,4 +1,3 @@
-
 require 'minitest/autorun'
 # require 'minitest/pride'
 require_relative '../lib/guess_stats'
@@ -9,14 +8,11 @@ class TestGuessStatsCorrectSpotAndColor < Minitest::Test
     assert_equal num, stats.correct_spot_and_color
   end
 
-  # def test_works_on_any_length
-  #   assert_correct_spot_and_color "r", "r", 1
-  #   assert_correct_spot_and_color "rrrrrr", "rrrrrr", 6
-  # end
-
-  # def test_works_with_strange_values
-  #   assert_correct_spot_and_color "X", "X", 1
-  # end
+  def test_works_with_strange_values
+    skip
+    assert_correct_spot_and_color "rrrr", "xxxx", 0
+    assert_correct_spot_and_color "rrrr", "xxxr", 0
+  end
 
   def test_some_examples
     assert_correct_spot_and_color "rrrr", "rrrr", 4
@@ -38,11 +34,6 @@ class TestGuessStatsCorrectColorIncorrectSpot < Minitest::Test
     stats = GuessStats.new(actual_colors, guessed_colors)
     assert_equal num, stats.correct_color_incorrect_spot
   end
-  #
-  # def test_works_on_any_length
-  #   assert_correct_color_incorrect_spot "br", "rb", 2          # => true
-  #   assert_correct_color_incorrect_spot "bybyby", "ybybyb", 6
-  # end
 
   def test_some_examples
     assert_correct_color_incorrect_spot "rybg", "gbyr", 4
@@ -57,10 +48,8 @@ class TestGuessStatsCorrectColorIncorrectSpot < Minitest::Test
   end
 end
 
-# recommended
-  "ryyr"
-  "rrbb"
-
-# and
-  "ryyr"
-  "rrby"
+class TestInputValidity < Minitest::Test
+    def test_it_can_tell_if_input_is_invalid
+      good_input = "rrrr"
+      bad_input = "xrrr" 
+    end

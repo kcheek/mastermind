@@ -59,6 +59,10 @@ class Game
     input_too_long || input_too_short
   end
 
+  def invalid_input?
+    input.scan(/[^rgbyq]/).count > 0
+  end
+
   def input_too_long
     input.length > 4
   end
