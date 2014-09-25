@@ -35,7 +35,8 @@ class Display
   end
 
   def turn_indicator(turns)
-    puts "You are on turn #{turns}."
+    puts "\n
+    You are on turn #{turns}."
   end
 
   def prompt_game_input
