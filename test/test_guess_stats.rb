@@ -47,9 +47,3 @@ class TestGuessStatsCorrectColorIncorrectSpot < Minitest::Test
     assert_correct_color_incorrect_spot "gyrg", "gyrb", 3
   end
 end
-
-class TestInputValidity < Minitest::Test
-    def test_it_can_tell_if_input_is_invalid
-      good_input = "rrrr"
-      bad_input = "xrrr" 
-    end

@@ -8,7 +8,7 @@ class Game
   def initialize(display)
     @turns           = 0
     @display         = display
-    @input           = ""
+    @input           = Input.new
     @color_selection = ['r','g','b','y']
     @secret_colors   = (0..3).map { color_selection.sample }.join
     @start_time      = Time.now
@@ -19,11 +19,13 @@ class Game
     loop do
       display.turn_indicator(turns)
       display.prompt_game_input
-      @input = gets.strip.downcase
-      if exit?
+      @input.input = gets.strip.downcase
+      if input.exit?
         display.game_quit
         break
-      elsif invalid_guess?
+      elsif input.invalid_guess?
+        display.not_a_valid_command
+      elsif input.invalid_input?
         display.not_a_valid_command
       elsif win?
         increment_turn
@@ -48,30 +50,10 @@ class Game
   end
 
   def win?
-    input == secret_colors
-  end
-
-  def exit?
-    input == "q" || input == "quit"
-  end
-
-  def invalid_guess?
-    input_too_long || input_too_short
-  end
-
-  def invalid_input?
-    input.scan(/[^rgbyq]/).count > 0
-  end
-
-  def input_too_long
-    input.length > 4
-  end
-
-  def input_too_short
-    input.length < 4
+    input.input == secret_colors
   end
 
   def guess_stats
-    GuessStats.new(secret_colors, input)
+    GuessStats.new(secret_colors, input.input)
   end
 end
